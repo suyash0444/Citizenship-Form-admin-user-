@@ -512,12 +512,14 @@ void approveorreject() {
             printf("| Current Status: %-10s |\n", user.status);
             printf("+-----------------------------+\n");
 
-            if (confirm_action("Is all the information correct and is the user valid for citizenship?")) {
+            if (confirm_action("Is all the information correct and is the user valid for citizenship?"))
+			{
                 printf("Enter new status (Approved/Rejected): ");
                 scanf("%s", new_status);
                 strcpy(user.status, new_status);
                 display_colored_message("Application status updated successfully!", COLOR_GREEN);
-            } else {
+            } else
+			{
                 display_colored_message("No changes were made to the application status.", COLOR_YELLOW);
             }
         }
@@ -532,7 +534,8 @@ void approveorreject() {
     fclose(userFile);
     fclose(tempFile);
 
-    if (found) {
+    if (found)
+	{
         remove("users.txt");
         rename("temp_users.txt", "users.txt");
     } else {
@@ -542,12 +545,14 @@ void approveorreject() {
     pause_program();
 }
 
-void apply_for_citizenship() {
+void apply_for_citizenship() 
+{
     printf("Applying for citizenship...\n");
     pause_program();
 }
 
-void view_application_status() {
+void view_application_status()
+{
     char user_id[20];
     int found = 0;
 
@@ -556,7 +561,8 @@ void view_application_status() {
 
     FILE *userFile = fopen("users.txt", "r");
 
-    if (userFile == NULL) {
+    if (userFile == NULL)
+	{
         display_colored_message("Error opening users file.", COLOR_RED);
         pause_program();
         return;
@@ -582,7 +588,8 @@ void view_application_status() {
 
     fclose(userFile);
 
-    if (!found) {
+    if (!found)
+	{
         display_colored_message("Application not found!", COLOR_RED);
     }
     pause_program();
@@ -596,7 +603,8 @@ int main() {
         display_main_menu();
         scanf("%d", &choice);
 
-        switch (choice) {
+        switch (choice) 
+		{
             case 1:
                 user_registration();
                 break;
